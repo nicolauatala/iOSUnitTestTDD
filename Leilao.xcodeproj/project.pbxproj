@@ -24,6 +24,8 @@
 		03FA4B29209354F50047D61B /* Leilao.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03FA4B28209354F50047D61B /* Leilao.swift */; };
 		3962CB2194A1E4C00DA717F4 /* Pods_LeilaoUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F145FB2F65C8FA496BC97986 /* Pods_LeilaoUITests.framework */; };
 		87030A9AE0C6ED1866EAE846 /* Pods_LeilaoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F38DF57ED8C7EFC799D1BD99 /* Pods_LeilaoTests.framework */; };
+		8915C1E523F5C7E200525F30 /* EncerradorDeLeilaoTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8915C1E423F5C7E200525F30 /* EncerradorDeLeilaoTest.swift */; };
+		8915C1E723F5CDD100525F30 /* LeilaoDaoFalso.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8915C1E623F5CDD100525F30 /* LeilaoDaoFalso.swift */; };
 		A23F5A0F209CA483000E6525 /* Avaliador.swift in Sources */ = {isa = PBXBuildFile; fileRef = A23F5A0E209CA483000E6525 /* Avaliador.swift */; };
 		A23F5A11209CD8FA000E6525 /* AvaliadorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A23F5A10209CD8FA000E6525 /* AvaliadorTests.swift */; };
 		A26FBA9420A32DE60090FC1F /* CriadorDeLeilao.swift in Sources */ = {isa = PBXBuildFile; fileRef = A26FBA9320A32DE60090FC1F /* CriadorDeLeilao.swift */; };
@@ -73,6 +75,8 @@
 		03FA4B28209354F50047D61B /* Leilao.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Leilao.swift; sourceTree = "<group>"; };
 		0CF7CCCF5DC3FEF7719DA049 /* Pods-LeilaoUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LeilaoUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-LeilaoUITests/Pods-LeilaoUITests.release.xcconfig"; sourceTree = "<group>"; };
 		7A02B7555041DD36E6C17E51 /* Pods-Leilao.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Leilao.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Leilao/Pods-Leilao.debug.xcconfig"; sourceTree = "<group>"; };
+		8915C1E423F5C7E200525F30 /* EncerradorDeLeilaoTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EncerradorDeLeilaoTest.swift; sourceTree = "<group>"; };
+		8915C1E623F5CDD100525F30 /* LeilaoDaoFalso.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeilaoDaoFalso.swift; sourceTree = "<group>"; };
 		96B13E362E12E632B3A49E78 /* Pods-Leilao.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Leilao.release.xcconfig"; path = "Pods/Target Support Files/Pods-Leilao/Pods-Leilao.release.xcconfig"; sourceTree = "<group>"; };
 		A23F5A0E209CA483000E6525 /* Avaliador.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Avaliador.swift; sourceTree = "<group>"; };
 		A23F5A10209CD8FA000E6525 /* AvaliadorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvaliadorTests.swift; sourceTree = "<group>"; };
@@ -117,6 +121,7 @@
 			isa = PBXGroup;
 			children = (
 				038136C020B4889D005FEDD7 /* LeilaoDao.swift */,
+				8915C1E623F5CDD100525F30 /* LeilaoDaoFalso.swift */,
 			);
 			path = Dao;
 			sourceTree = "<group>";
@@ -174,6 +179,7 @@
 			children = (
 				03FA4B08209353290047D61B /* LeilaoTests.swift */,
 				A23F5A10209CD8FA000E6525 /* AvaliadorTests.swift */,
+				8915C1E423F5C7E200525F30 /* EncerradorDeLeilaoTest.swift */,
 				03FA4B0A209353290047D61B /* Info.plist */,
 			);
 			path = LeilaoTests;
@@ -426,6 +432,7 @@
 			files = (
 				03FA4AF3209353270047D61B /* ViewController.swift in Sources */,
 				038136C120B4889E005FEDD7 /* LeilaoDao.swift in Sources */,
+				8915C1E723F5CDD100525F30 /* LeilaoDaoFalso.swift in Sources */,
 				03FA4B25209353AF0047D61B /* Lance.swift in Sources */,
 				038136CB20B48B5F005FEDD7 /* EncerradorDeLeilao.swift in Sources */,
 				03FA4AF1209353270047D61B /* AppDelegate.swift in Sources */,
@@ -442,6 +449,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8915C1E523F5C7E200525F30 /* EncerradorDeLeilaoTest.swift in Sources */,
 				03FA4B09209353290047D61B /* LeilaoTests.swift in Sources */,
 				A23F5A11209CD8FA000E6525 /* AvaliadorTests.swift in Sources */,
 			);

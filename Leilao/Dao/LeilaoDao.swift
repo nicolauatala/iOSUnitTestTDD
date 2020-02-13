@@ -7,6 +7,16 @@
 
 import UIKit
 
+/*
+Data Access Object - DAO
+	É um padrão para aplicações que utilizam persistência de dados, onde tem a
+	separação das regras de negócio das regras de acesso a banco de dados,
+	implementada com linguagens de programação orientadas a objetos e
+	arquitetura MVC, onde todas as funcionalidades de bancos de dados, tais
+	como obter conexões, mapear objetos para tipos de dados SQL ou
+	executar comandos SQL, devem ser feitas por classes DAO.
+*/
+
 class LeilaoDao: NSObject {
     
     private var dataBase : OpaquePointer? = nil
