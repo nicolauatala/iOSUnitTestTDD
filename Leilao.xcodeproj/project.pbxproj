@@ -126,8 +126,8 @@
 			isa = PBXGroup;
 			children = (
 				03FA4B08209353290047D61B /* LeilaoTests.swift */,
-				03FA4B0A209353290047D61B /* Info.plist */,
 				8915C1DF23F5749C00525F30 /* AvaliadorTests.swift */,
+				03FA4B0A209353290047D61B /* Info.plist */,
 			);
 			path = LeilaoTests;
 			sourceTree = "<group>";
