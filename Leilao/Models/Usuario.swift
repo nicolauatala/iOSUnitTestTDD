@@ -2,8 +2,8 @@
 //  Usuario.swift
 //  Leilao
 //
-//  Created by Ândriu Coelho on 27/04/18.
-//  Copyright © 2018 Alura. All rights reserved.
+//  Created by Nicolau Atala Pelluzi on 13/02/20.
+//  Copyright © 2020 Alura. All rights reserved.
 //
 
 import Foundation
@@ -19,11 +19,11 @@ class Usuario {
     }
 }
 
-extension Usuario: Equatable {
-	static func == (lhs: Usuario, rhs: Usuario) -> Bool {
-		if lhs.id != rhs.id || lhs.nome != rhs.nome {
-			return false
-		}
-		return true
-	}
+extension Usuario:Equatable {
+    static func == (lhs: Usuario, rhs: Usuario) -> Bool {
+        if lhs.id != rhs.id || lhs.nome != rhs.nome {
+            return false
+        }
+        return true
+    }
 }

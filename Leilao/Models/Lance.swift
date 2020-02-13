@@ -2,8 +2,8 @@
 //  Lance.swift
 //  Leilao
 //
-//  Created by Ândriu Coelho on 27/04/18.
-//  Copyright © 2018 Alura. All rights reserved.
+//  Created by Nicolau Atala Pelluzi on 13/02/20.
+//  Copyright © 2020 Alura. All rights reserved.
 //
 
 import Foundation
