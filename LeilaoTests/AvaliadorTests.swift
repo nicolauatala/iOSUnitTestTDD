@@ -32,11 +32,11 @@ class AvaliadorTests: XCTestCase {
 
 	func testDeveEntenderLancesEmOrdomCrescente() {
 		// Cenario
-		
-		let leilao = Leilao(descricao: "Playstation 4")
-		leilao.propoe(lance: Lance(maria, 250.0))
-		leilao.propoe(lance: Lance(joao, 300.0))
-		leilao.propoe(lance: Lance(jose, 400.0))
+		let leilao = CriadorDeLeilao().para(descricao: "Playstation 4")
+									  .lance(maria, 250.0)
+									  .lance(joao, 300.0)
+									  .lance(jose, 400.0)
+									.constroi()
 		
 		// Acao
 		leiloeiro.avalia(leilao: leilao)
@@ -50,22 +50,24 @@ class AvaliadorTests: XCTestCase {
 	// Importante: Lembre-se sempre de criar um teste para cada Classe de Equivalência.
 	
 	func testDeveEntenderLeilaoComApenasUmLance() {
-		let leilao = Leilao(descricao: "Playstation 4")
-		leilao.propoe(lance: Lance(joao, 1000.0))
+		let leilao = CriadorDeLeilao().para(descricao: "Playstation 4")
+		  							  .lance(joao, 1300.0)
+									  .constroi()
 		
 		leiloeiro.avalia(leilao: leilao)
 		
-		XCTAssertEqual(1000.0, leiloeiro.menorLance())
-		XCTAssertEqual(1000.0, leiloeiro.maiorLance())
+		XCTAssertEqual(1300.0, leiloeiro.menorLance())
+		XCTAssertEqual(1300.0, leiloeiro.maiorLance())
 	}
 	
 	func testDeveEncontrarOsTresMaioresLances() {
 		
-		let leilao = Leilao(descricao: "Playstation 4")
-		leilao.propoe(lance: Lance(joao, 300.0))
-		leilao.propoe(lance: Lance(maria, 400.0))
-		leilao.propoe(lance: Lance(joao, 500.0))
-		leilao.propoe(lance: Lance(maria, 600.0))
+		let leilao = CriadorDeLeilao().para(descricao: "Playstation 4")
+									  .lance(joao, 300.0)
+									  .lance(maria, 400.0)
+									  .lance(joao, 500.0 )
+									  .lance(maria, 600.0)
+									  .constroi()
 		
 		leiloeiro.avalia(leilao: leilao)
 		
