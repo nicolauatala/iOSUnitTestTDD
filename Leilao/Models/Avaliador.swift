@@ -14,8 +14,8 @@ enum ErroAvaliador:Error {
 
 class Avaliador {
     
-    private var maiorDeTodos = Double.leastNonzeroMagnitude
-    private var menorDeTodos = Double.greatestFiniteMagnitude
+	private var maiorDeTodos: Double = Double.leastNonzeroMagnitude
+	private var menorDeTodos: Double = Double.greatestFiniteMagnitude
     private var maiores:[Lance] = []
     
     func avalia(leilao:Leilao) throws {
