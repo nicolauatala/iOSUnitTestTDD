@@ -1,4 +1,4 @@
-// MARK: - Mocks generated from file: Leilao/Dao/LeilaoDao.swift at 2020-02-14 13:47:25 +0000
+// MARK: - Mocks generated from file: Leilao/Dao/LeilaoDao.swift at 2020-02-14 14:03:18 +0000
 
 //
 //  LeilaoDao.swift
@@ -223,7 +223,7 @@ import UIKit
 }
 
 
-// MARK: - Mocks generated from file: Leilao/Models/Carteiro.swift at 2020-02-14 13:47:25 +0000
+// MARK: - Mocks generated from file: Leilao/Models/Carteiro.swift at 2020-02-14 14:03:18 +0000
 
 //
 //  Carteiro.swift
