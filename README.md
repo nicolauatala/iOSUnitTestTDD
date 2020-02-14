@@ -109,3 +109,67 @@ func testDeveIgnorarLeilaoSemNenhumLance() {
     }
 }
 ```
+
+## Mocks
+
+Objetos Mock, objetos simulados ou simplesmente Mock (do inglês Mock object) são objetos que simulam o comportamento de objetos reais de forma controlada. São normalmente criados para testar o comportamento de outros objetos. Em outras palavras, os objetos mock são objetos “falsos” que simulam o comportamento de uma classe ou objeto “real” para que possamos focar o teste na unidade a ser testada.
+
+Exemplo de uso no projeto, para substituir a classe que Dao real que faz a persistência dos dados:
+
+```swift
+class LeilaoDaoFalse {
+
+  private var leiloes: [Leilao] = []
+
+  func salva(_ leilao:Leilao) {
+    leiloes.append(leilao)
+  }
+
+  func encerrados() -> [Leilao] {
+    return leiloes.filter { $0.encerrado == true }
+  }
+
+  func correntes() -> [Leilao] {
+    return leiloes.filter { $0.encerrado == false }
+  }
+
+  func atualiza(leilao:Leilao) {}
+}
+
+```
+
+## Injeção de dependência
+
+É um padrão de desenvolvimento utilizado quando é necessário manter baixo o nível de acoplamento entre diferentes módulos. As dependências entre os módulos não são definidas programaticamente, mas sim "injetado" em cada componente suas dependências declaradas.
+
+Exemplo:
+
+```swift
+class EncerradorDeLeilao {
+
+  private var total = 0
+
+  private var dao: LeilaoDao
+
+  // Injeção da dependência
+  init(_ leilaoDao: LeilaoDao) {
+    self.dao = leilaoDao
+  }
+
+    func encerra() {
+        // Em vez de instanciar no método a um objeto LeilaoDao
+        // LeilaoDao é injetado na inicialização da classe
+        // EncerradorDeLeilao, assim foi injetado a dependência.
+
+        // let dao = LeilaoDao()
+
+        let todosLeiloesCorrentes = dao.correntes()
+        for leilao in todosLeiloesCorrentes {
+            if comecouSemanaPassada(leilao) {
+                leilao.encerra()
+                total+=1
+                dao.atualiza(leilao: leilao)
+            }
+    // implementação da classe...
+
+```
