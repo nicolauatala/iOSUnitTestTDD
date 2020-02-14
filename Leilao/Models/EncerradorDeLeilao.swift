@@ -10,9 +10,9 @@ import Foundation
 class EncerradorDeLeilao {
     
     private var total = 0
-	private var dao: LeilaoDaoFalse
+	private var dao: LeilaoDao
 	
-	init(_ leilaoDao: LeilaoDaoFalse) {
+	init(_ leilaoDao: LeilaoDao) {
 		self.dao = leilaoDao
 	}
     

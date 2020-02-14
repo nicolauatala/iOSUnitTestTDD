@@ -8,6 +8,7 @@
 
 import XCTest
 @testable import Leilao
+import Cuckoo
 
 class EncerradorDeLeilaoTest: XCTestCase {
 
@@ -34,19 +35,21 @@ class EncerradorDeLeilaoTest: XCTestCase {
 						.naData(data: dataAntiga)
 						.constroi()
 		
-		let dao = LeilaoDaoFalse()
-		dao.salva(tvLed)
-		dao.salva(geladeira)
+		let leiloesAntigos = [tvLed, geladeira]
 		
-		let encerradorDeLeilao = EncerradorDeLeilao(dao)
+		let daoFalso = MockLeilaoDao().withEnabledSuperclassSpy()
+
+		stub(daoFalso) { (daoFalso) in
+			when(daoFalso.correntes()).thenReturn(leiloesAntigos)
+		}
+		
+		let encerradorDeLeilao = EncerradorDeLeilao(daoFalso)
 		encerradorDeLeilao.encerra()
 		
-		let leiloesEncerrados = dao.encerrados()
+		guard let statusTvLed = tvLed.isEncerrado() else { return }
+		guard let statusGeladeira = geladeira.isEncerrado() else { return }
 		
-		guard let statusTvLed = leiloesEncerrados[0].isEncerrado() else { return }
-		guard let statusGeladeira = leiloesEncerrados[1].isEncerrado() else { return }
-		
-		XCTAssertEqual(2, leiloesEncerrados.count)
+		XCTAssertEqual(2, encerradorDeLeilao.getTotalEncerrados())
 		XCTAssertTrue(statusTvLed)
 		XCTAssertTrue(statusGeladeira)
 	}

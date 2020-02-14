@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -25,7 +25,7 @@
 		3962CB2194A1E4C00DA717F4 /* Pods_LeilaoUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F145FB2F65C8FA496BC97986 /* Pods_LeilaoUITests.framework */; };
 		87030A9AE0C6ED1866EAE846 /* Pods_LeilaoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F38DF57ED8C7EFC799D1BD99 /* Pods_LeilaoTests.framework */; };
 		8915C1E523F5C7E200525F30 /* EncerradorDeLeilaoTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8915C1E423F5C7E200525F30 /* EncerradorDeLeilaoTest.swift */; };
-		8915C1E723F5CDD100525F30 /* LeilaoDaoFalso.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8915C1E623F5CDD100525F30 /* LeilaoDaoFalso.swift */; };
+		8915C1EA23F616C800525F30 /* GeneratedMocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8915C1E923F616C800525F30 /* GeneratedMocks.swift */; };
 		A23F5A0F209CA483000E6525 /* Avaliador.swift in Sources */ = {isa = PBXBuildFile; fileRef = A23F5A0E209CA483000E6525 /* Avaliador.swift */; };
 		A23F5A11209CD8FA000E6525 /* AvaliadorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A23F5A10209CD8FA000E6525 /* AvaliadorTests.swift */; };
 		A26FBA9420A32DE60090FC1F /* CriadorDeLeilao.swift in Sources */ = {isa = PBXBuildFile; fileRef = A26FBA9320A32DE60090FC1F /* CriadorDeLeilao.swift */; };
@@ -76,7 +76,7 @@
 		0CF7CCCF5DC3FEF7719DA049 /* Pods-LeilaoUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LeilaoUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-LeilaoUITests/Pods-LeilaoUITests.release.xcconfig"; sourceTree = "<group>"; };
 		7A02B7555041DD36E6C17E51 /* Pods-Leilao.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Leilao.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Leilao/Pods-Leilao.debug.xcconfig"; sourceTree = "<group>"; };
 		8915C1E423F5C7E200525F30 /* EncerradorDeLeilaoTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EncerradorDeLeilaoTest.swift; sourceTree = "<group>"; };
-		8915C1E623F5CDD100525F30 /* LeilaoDaoFalso.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeilaoDaoFalso.swift; sourceTree = "<group>"; };
+		8915C1E923F616C800525F30 /* GeneratedMocks.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeneratedMocks.swift; sourceTree = "<group>"; };
 		96B13E362E12E632B3A49E78 /* Pods-Leilao.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Leilao.release.xcconfig"; path = "Pods/Target Support Files/Pods-Leilao/Pods-Leilao.release.xcconfig"; sourceTree = "<group>"; };
 		A23F5A0E209CA483000E6525 /* Avaliador.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Avaliador.swift; sourceTree = "<group>"; };
 		A23F5A10209CD8FA000E6525 /* AvaliadorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvaliadorTests.swift; sourceTree = "<group>"; };
@@ -121,7 +121,6 @@
 			isa = PBXGroup;
 			children = (
 				038136C020B4889D005FEDD7 /* LeilaoDao.swift */,
-				8915C1E623F5CDD100525F30 /* LeilaoDaoFalso.swift */,
 			);
 			path = Dao;
 			sourceTree = "<group>";
@@ -177,6 +176,7 @@
 		03FA4B07209353290047D61B /* LeilaoTests */ = {
 			isa = PBXGroup;
 			children = (
+				8915C1E923F616C800525F30 /* GeneratedMocks.swift */,
 				03FA4B08209353290047D61B /* LeilaoTests.swift */,
 				A23F5A10209CD8FA000E6525 /* AvaliadorTests.swift */,
 				8915C1E423F5C7E200525F30 /* EncerradorDeLeilaoTest.swift */,
@@ -269,6 +269,7 @@
 				03FA4B00209353290047D61B /* Sources */,
 				03FA4B01209353290047D61B /* Frameworks */,
 				03FA4B02209353290047D61B /* Resources */,
+				CAA4574FDA9F4C8D365B8623 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -421,7 +422,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# Define output file. Change \"${PROJECT_DIR}/${PROJECT_NAME}Tests\" to your test's root source folder, if it's not the default name.\nOUTPUT_FILE=\"${PROJECT_DIR}/${PROJECT_NAME}Tests/GeneratedMocks.swift\"\necho \"Generated Mocks File = ${OUTPUT_FILE}\"\n\n# Define input directory. Change \"${PROJECT_DIR}/${PROJECT_NAME}\" to your project's root source folder, if it's not the default name.\nINPUT_DIR=\"${PROJECT_DIR}/${PROJECT_NAME}\"\necho \"Mocks Input Directory = ${INPUT_DIR}\"\n\n# Generate mock files, include as many input files as you'd like to create mocks for.\n\"${PODS_ROOT}/Cuckoo/run\" generate --testable \"${PROJECT_NAME}\" \\\n--output \"${OUTPUT_FILE}\" \\\n\"${INPUT_DIR}/FileName1.swift\" \\\n\"${INPUT_DIR}/FileName2.swift\" \\\n\"${INPUT_DIR}/FileName3.swift\"\n# ... and so forth, the last line should never end with a backslash\t\n\t\n\n# After running once, locate `GeneratedMocks.swift` and drag it into your Xcode test target group.\n";
+			shellScript = "# Define output file. Change \"${PROJECT_DIR}/${PROJECT_NAME}Tests\" to your test's root source folder, if it's not the default name.\nOUTPUT_FILE=\"${PROJECT_DIR}/${PROJECT_NAME}Tests/GeneratedMocks.swift\"\necho \"Generated Mocks File = ${OUTPUT_FILE}\"\n\n# Define input directory. Change \"${PROJECT_DIR}/${PROJECT_NAME}\" to your project's root source folder, if it's not the default name.\nINPUT_DIR=\"${PROJECT_DIR}/${PROJECT_NAME}\"\necho \"Mocks Input Directory = ${INPUT_DIR}\"\n\n# Generate mock files, include as many input files as you'd like to create mocks for.\n\"${PODS_ROOT}/Cuckoo/run\" generate --testable \"${PROJECT_NAME}\" \\\n--output \"${OUTPUT_FILE}\" \\\n\"${INPUT_DIR}/Dao/LeilaoDao.swift\"\n# ... and so forth, the last line should never end with a backslash\t\n\t\n\n# After running once, locate `GeneratedMocks.swift` and drag it into your Xcode test target group.\n";
 		};
 		CA991E11FC04CD5EB9E604A8 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -441,6 +442,23 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		CAA4574FDA9F4C8D365B8623 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-LeilaoTests/Pods-LeilaoTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-LeilaoTests/Pods-LeilaoTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-LeilaoTests/Pods-LeilaoTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -450,7 +468,6 @@
 			files = (
 				03FA4AF3209353270047D61B /* ViewController.swift in Sources */,
 				038136C120B4889E005FEDD7 /* LeilaoDao.swift in Sources */,
-				8915C1E723F5CDD100525F30 /* LeilaoDaoFalso.swift in Sources */,
 				03FA4B25209353AF0047D61B /* Lance.swift in Sources */,
 				038136CB20B48B5F005FEDD7 /* EncerradorDeLeilao.swift in Sources */,
 				03FA4AF1209353270047D61B /* AppDelegate.swift in Sources */,
@@ -470,6 +487,7 @@
 				8915C1E523F5C7E200525F30 /* EncerradorDeLeilaoTest.swift in Sources */,
 				03FA4B09209353290047D61B /* LeilaoTests.swift in Sources */,
 				A23F5A11209CD8FA000E6525 /* AvaliadorTests.swift in Sources */,
+				8915C1EA23F616C800525F30 /* GeneratedMocks.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
