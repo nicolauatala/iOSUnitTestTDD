@@ -12,15 +12,19 @@ import Cuckoo
 
 class EncerradorDeLeilaoTest: XCTestCase {
 
+	var formatador: DateFormatter!
+	
     override func setUp() {
+		super.setUp()
+		formatador = DateFormatter()
+		formatador.dateFormat = "yyyy/MM/dd"
     }
 
     override func tearDown() {
     }
 	
 	func testDeveEncerrarLeilaoQueComecaramUmaSemanaAntes() {
-		let formatador = DateFormatter()
-		formatador.dateFormat = "yyyy/MM/dd"
+		
 		guard let dataAntiga = formatador.date(from: "2020/01/20") else {
 			return
 		}
@@ -53,5 +57,31 @@ class EncerradorDeLeilaoTest: XCTestCase {
 		XCTAssertTrue(statusTvLed)
 		XCTAssertTrue(statusGeladeira)
 	}
+	
+	func testDeveAtualizarLeiloesEncerrados() {
+		guard let dataAntiga = formatador.date(from: "2020/01/20") else { return }
+		
+		let tvLed = CriadorDeLeilao()
+						.para(descricao: "TV Led")
+						.naData(data: dataAntiga)
+						.constroi()
+		
+		let daoFalso = MockLeilaoDao().withEnabledSuperclassSpy()
+		
+		stub(daoFalso) { (daoFalso) in
+			when(daoFalso.correntes()).thenReturn([tvLed])
+		}
+		
+		let encerradorDeLeilao = EncerradorDeLeilao(daoFalso)
+		encerradorDeLeilao.encerra()
+		
+		verify(daoFalso).atualiza(leilao: tvLed)
+	}
 
+}
+
+extension Leilao: Matchable {
+	public var matcher: ParameterMatcher<Leilao> {
+		return equal(to: self)
+	}
 }
