@@ -173,3 +173,91 @@ class EncerradorDeLeilao {
     // implementação da classe...
 
 ```
+
+## Adicionando pod Cuckoo ao projeto
+
+Pod para agilizar o desenvolvimento de testes, onde o pod cria a classe de Mock que será testada.
+
+[https://github.com/Brightify/Cuckoo](https://github.com/Brightify/Cuckoo)
+
+Criar Mocks:
+
+- Instalar via cocoaPods
+
+- Inserir script no Build Phases
+
+- Instanciar classe que será mockada
+
+```swift
+let avaliadorFalso = Avaliador()
+```
+
+## Ensinando o Mock a responder conforme o esperado
+
+Quando o método .encerrados() for chamado, o mock irá retornar imadiatamente o valor dentro de .thenReturn(...)
+Exemplo:
+
+```swift
+let daoFalso = MockLeilaoDao().withEnabledSuperclassSpy()
+
+stub(daoFalso) { (daoFalso) in
+  when(daoFalso.encerrados()).thenReturn([playStation])
+}
+```
+
+## Verify
+
+Verifica se o método foi chamado:
+
+```swift
+// dentro do método encerra() será invocado o método .atualiza()
+encerradorDeLeilao.encerra()
+
+// o verify irá testar se o método .atualiza() foi invocado
+verify(daoFalso).atualiza(leilao: tvLed)
+```
+
+## Métodos que lançam exceções
+
+```swift
+let error = NSError(domain: "Error", code: 0, userInfo: nil)
+
+stub(daoFalso) { (daoFalso) in
+  when(daoFalso.correntes()).thenReturn([tvLed, geladeira])
+  // força o mock a retornar o erro
+  when(daoFalso.atualiza(leilao: tvLed)).thenThrow(error)
+}
+```
+
+## Capturando argumento durante o fluxo dos dados
+
+```swift
+// ...
+let playStation = CriadorDeLeilao().para(descricao: "Playstation")
+    .lance(Usuario(nome: "José"), 2000.0)
+    .lance(Usuario(nome: "Maria"), 2500.0)
+    .constroi()
+
+let daoFalso = MockLeilaoDao().withEnabledSuperclassSpy()
+
+stub(daoFalso) { (daoFalso) in
+  when(daoFalso.encerrados()).thenReturn([playStation])
+}
+
+let avaliadorFalso = Avaliador()
+
+let pagamentos = MockRepositorioDePagamento().withEnabledSuperclassSpy()
+
+let geradorDePagamento = GeradorDePagamento(daoFalso, avaliadorFalso, pagamentos)
+geradorDePagamento.gera()
+
+// instancia o objeto que irá capturar um atributo
+let capturadorDeArgumento = ArgumentCaptor<Pagamento>()
+
+// passa como parametro o capturador
+verify(pagamentos).salva(capturadorDeArgumento.capture())
+
+// compara o valor capturado com o esperado
+let pagamentoGerado = capturadorDeArgumento.value
+XCTAssertEqual(2500.0, pagamentoGerado?.getValor())
+```
