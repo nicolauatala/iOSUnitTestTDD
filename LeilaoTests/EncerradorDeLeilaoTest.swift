@@ -79,6 +79,36 @@ class EncerradorDeLeilaoTest: XCTestCase {
 		
 		verify(daoFalso).atualiza(leilao: tvLed)
 	}
+	
+	func testDeveContinuarExecucaoMesmoQuandoDaoFalha() {
+		
+		guard let dataAntiga = formatador.date(from: "2020/01/20") else {
+			return
+		}
+		
+		let tvLed = CriadorDeLeilao()
+			.para(descricao: "TV Led")
+			.naData(data: dataAntiga)
+			.constroi()
+		
+		let geladeira = CriadorDeLeilao()
+			.para(descricao: "Geladeira")
+			.naData(data: dataAntiga)
+			.constroi()
+		
+		let error = NSError(domain: "Error", code: 0, userInfo: nil)
+		
+		stub(daoFalso) { (daoFalso) in
+			when(daoFalso.correntes()).thenReturn([tvLed, geladeira])
+			when(daoFalso.atualiza(leilao: tvLed)).thenThrow(error)
+		}
+		
+		encerradorDeLeilao.encerra()
+		
+		verify(daoFalso).atualiza(leilao: geladeira)
+		verify(carteiroFalso).envia(geladeira)
+		
+	}
 
 }
 
