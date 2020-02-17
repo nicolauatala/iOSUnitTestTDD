@@ -12,12 +12,16 @@ import XCTest
 class LeiloesViewControllerTests: XCTestCase {
 
 	var sut: LeiloesViewController!
+	var tableView: UITableView!
 	
     override func setUp() {
 		if #available(iOS 13.0, *) {
 			sut = UIStoryboard(name: "Main", bundle: nil)
 				.instantiateViewController(identifier: "home") as? LeiloesViewController
 		}
+		_ = sut.view
+		tableView = sut.tableView
+		tableView.dataSource = sut
     }
 
     override func tearDown() {
@@ -36,7 +40,7 @@ class LeiloesViewControllerTests: XCTestCase {
 		XCTAssertNotNil(sut.tableView.dataSource is LeiloesViewController)
 	}
 	
-	func numberOfRowInSectionsDeveSerAQuantidadeDeLeiloesDaLista() {
+	func testNumberOfRowInSectionsDeveSerAQuantidadeDeLeiloesDaLista() {
 		let tableView = UITableView()
 		tableView.dataSource = sut
 		
@@ -49,5 +53,40 @@ class LeiloesViewControllerTests: XCTestCase {
 		
 		XCTAssertEqual(2, tableView.numberOfRows(inSection: 0))
 	}
+	
+	func testCellForRowDeveRetornarLeilaoTableViewCell() {
+		sut.addLeilao(Leilao(descricao: "Playstation 4 "))
+		tableView.reloadData()
+		
+		let celula = tableView.cellForRow(at: IndexPath(row: 0, section: 0))
+		
+		XCTAssertTrue(celula is LeilaoTableViewCell)
+		
+	}
+	
+	func testCellForRowDeveChamarDequeueReusable() {
+		let mockTablewView = MockTableView()
+		mockTablewView.dataSource = sut
+		
+		mockTablewView.register(LeilaoTableViewCell.self, forCellReuseIdentifier: "LeilaoTablewViewCell")
+		
+		sut.addLeilao(Leilao(descricao: "Nintendo"))
+		mockTablewView.reloadData()
+		
+		_ = mockTablewView.cellForRow(at: IndexPath(row: 0, section: 0))
+		
+		XCTAssertTrue(mockTablewView.celulaForReutilizada)
+	}
 
+}
+
+extension LeiloesViewControllerTests {
+	class MockTableView: UITableView {
+		var celulaForReutilizada = false
+		
+		override func dequeueReusableCell(withIdentifier identifier: String, for indexPath: IndexPath) -> UITableViewCell {
+			celulaForReutilizada = true
+			return super.dequeueReusableCell(withIdentifier: "LeilaoTablewViewCell", for: indexPath)
+		}
+	}
 }

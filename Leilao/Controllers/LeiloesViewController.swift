@@ -30,7 +30,8 @@ class LeiloesViewController: UIViewController, UITableViewDataSource {
 	}
 	
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-		return UITableViewCell()
+		let celulaLeilao = tableView.dequeueReusableCell(withIdentifier: "LeilaoTablewViewCell", for: indexPath)
+		return celulaLeilao
 	}
     
 }
