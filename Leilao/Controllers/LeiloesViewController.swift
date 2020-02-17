@@ -8,16 +8,29 @@
 
 import UIKit
 
-class LeiloesViewController: UIViewController {
+class LeiloesViewController: UIViewController, UITableViewDataSource {
 
 	// MARK: - IBOutlets
 	
 	@IBOutlet weak var tableView: UITableView!
 	
+	private var listaDeLeiloes:[Leilao] = []
+	
 	override func viewDidLoad() {
         super.viewDidLoad()
 
     }
+	
+	func addLeilao(_ leilao: Leilao) {
+		listaDeLeiloes.append(leilao)
+	}
+	
+	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+		return listaDeLeiloes.count
+	}
+	
+	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+		return UITableViewCell()
+	}
     
-
 }

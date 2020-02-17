@@ -11,20 +11,43 @@ import XCTest
 
 class LeiloesViewControllerTests: XCTestCase {
 
+	var sut: LeiloesViewController!
+	
     override func setUp() {
+		if #available(iOS 13.0, *) {
+			sut = UIStoryboard(name: "Main", bundle: nil)
+				.instantiateViewController(identifier: "home") as? LeiloesViewController
+		}
     }
 
     override func tearDown() {
     }
 	
-	@available(iOS 13.0, *)
 	func testTableViewNaoDeveEstarVaziaAposViewDidLoad() {
-		let sut = UIStoryboard(name: "Main", bundle: nil)
-					.instantiateViewController(identifier: "home") as! LeiloesViewController
 		_ = sut.view
 		
 		XCTAssertNotNil(sut.tableView)
 		
+	}
+	
+	func testDataSourceDaTableViewNaoDeveSerNill() {
+		_ = sut.view
+		XCTAssertNotNil(sut.tableView.dataSource)
+		XCTAssertNotNil(sut.tableView.dataSource is LeiloesViewController)
+	}
+	
+	func numberOfRowInSectionsDeveSerAQuantidadeDeLeiloesDaLista() {
+		let tableView = UITableView()
+		tableView.dataSource = sut
+		
+		sut.addLeilao(Leilao(descricao: "Playstation 4 "))
+		
+		XCTAssertEqual(1, tableView.numberOfRows(inSection: 0))
+		
+		sut.addLeilao(Leilao(descricao: "Nintendo"))
+		tableView.reloadData()
+		
+		XCTAssertEqual(2, tableView.numberOfRows(inSection: 0))
 	}
 
 }
