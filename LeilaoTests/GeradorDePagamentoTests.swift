@@ -58,13 +58,26 @@ class GeradorDePagamentoTests: XCTestCase {
 			when(daoFalso.encerrados()).thenReturn([playStation])
 		}
 		
-		let geradorDePagamento = GeradorDePagamento(daoFalso, avaliadorFalso, pagamentos)
+		let formatador = DateFormatter()
+		formatador.dateFormat = "yyy/MM/dd"
+		
+		guard let dataAntiga = formatador.date(from: "2020/02/10") else { return }
+		
+		let geradorDePagamento = GeradorDePagamento(daoFalso, avaliadorFalso, pagamentos, dataAntiga)
 		geradorDePagamento.gera()
 		
 		let capturadorDeArgumento = ArgumentCaptor<Pagamento>()
 		verify(pagamentos).salva(capturadorDeArgumento.capture())
 		
 		let pagamentoGerado = capturadorDeArgumento.value
+		
+		let formatadorDeData = DateFormatter()
+		formatadorDeData.dateFormat = "ccc"
+		
+		guard let dataDoPagamento = pagamentoGerado?.getData() else { return }
+		let diaDaSemana = formatadorDeData.string(from: dataDoPagamento)
+		
+		XCTAssertEqual("Mon", diaDaSemana)
 		
 	}
 }

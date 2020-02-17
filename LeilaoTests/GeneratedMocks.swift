@@ -1,4 +1,4 @@
-// MARK: - Mocks generated from file: Leilao/Dao/LeilaoDao.swift at 2020-02-14 19:38:01 +0000
+// MARK: - Mocks generated from file: Leilao/Dao/LeilaoDao.swift at 2020-02-17 00:28:49 +0000
 
 //
 //  LeilaoDao.swift
@@ -223,7 +223,7 @@ import UIKit
 }
 
 
-// MARK: - Mocks generated from file: Leilao/Models/Avaliador.swift at 2020-02-14 19:38:01 +0000
+// MARK: - Mocks generated from file: Leilao/Models/Avaliador.swift at 2020-02-17 00:28:49 +0000
 
 //
 //  Avaliador.swift
@@ -419,7 +419,7 @@ import Foundation
 }
 
 
-// MARK: - Mocks generated from file: Leilao/Models/Carteiro.swift at 2020-02-14 19:38:01 +0000
+// MARK: - Mocks generated from file: Leilao/Models/Carteiro.swift at 2020-02-17 00:28:49 +0000
 
 //
 //  Carteiro.swift
@@ -525,7 +525,7 @@ import Foundation
 }
 
 
-// MARK: - Mocks generated from file: Leilao/Models/RepositorioDePagamento.swift at 2020-02-14 19:38:01 +0000
+// MARK: - Mocks generated from file: Leilao/Models/RepositorioDePagamento.swift at 2020-02-17 00:28:49 +0000
 
 //
 //  RepositorioDePagamento.swift

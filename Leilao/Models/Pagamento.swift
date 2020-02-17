@@ -10,9 +10,9 @@ import Foundation
 
 class Pagamento {
 	private var valor: Double
-	private var data: Data
+	private var data: Date
 	
-	init(_ valor: Double, _ data: Data) {
+	init(_ valor: Double, _ data: Date) {
 		self.data = data
 		self.valor = valor
 	}
@@ -21,7 +21,7 @@ class Pagamento {
 		return valor
 	}
 	
-	func getData() -> Data {
+	func getData() -> Date {
 		return data
 	}
 }
