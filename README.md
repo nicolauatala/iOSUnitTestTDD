@@ -15,10 +15,10 @@ Exemplo:
 ```swift
   // cenário
   let leilao = CriadorDeLeilao().para(descricao: "Playstation 4")
-                              .lance(maria, 250.0)
-                              .lance(joao, 300.0)
-                              .lance(jose, 400.0)
-                              .constroi()
+                .lance(maria, 250.0)
+                .lance(joao, 300.0)
+                .lance(jose, 400.0)
+                .constroi()
 
   // ação
   try? leiloeiro.avalia(leilao: leilao)
@@ -73,10 +73,10 @@ Utilização:
 ...
 
 let leilao = CriadorDeLeilao().para(descricao: "Playstation 4")
-                              .lance(joao, 300.0)
-                              .lance(maria, 400.0)
-                              .lance(joao, 500.0 )
-                              .lance(maria, 600.0).constroi()
+              .lance(joao, 300.0)
+              .lance(maria, 400.0)
+              .lance(joao, 500.0 )
+              .lance(maria, 600.0).constroi()
 
     leiloeiro.avalia(leilao: leilao)
 ...
@@ -104,7 +104,10 @@ Dessa forma, o método testDeveIgnorarLeilaoSemNenhumLance() ficará da seguinte
 ```swift
 func testDeveIgnorarLeilaoSemNenhumLance() {
     let leilao = CriadorDeLeilao().para(descricao: "Playstation 4").constroi()
-    XCTAssertThrowsError(try leiloeiro.avalia(leilao: leilao), "Não é possível avaliar leilão sem lances") { (error) in
+    XCTAssertThrowsError(
+        try leiloeiro.avalia(leilao: leilao),
+        "Não é possível avaliar leilão sem lances"
+      ) { (error) in
         print(error.localizedDescription)
     }
 }
@@ -140,7 +143,10 @@ class LeilaoDaoFalse {
 
 ## Injeção de dependência
 
-É um padrão de desenvolvimento utilizado quando é necessário manter baixo o nível de acoplamento entre diferentes módulos. As dependências entre os módulos não são definidas programaticamente, mas sim "injetado" em cada componente suas dependências declaradas.
+É um padrão de desenvolvimento utilizado quando é necessário manter baixo o
+nível de acoplamento entre diferentes módulos. As dependências entre os módulos
+não são definidas programaticamente, mas sim "injetado" em cada componente suas
+dependências declaradas.
 
 Exemplo:
 
@@ -176,7 +182,8 @@ class EncerradorDeLeilao {
 
 ## Adicionando pod Cuckoo ao projeto
 
-Pod para agilizar o desenvolvimento de testes, onde o pod cria a classe de Mock que será testada.
+Pod para agilizar o desenvolvimento de testes, onde o pod cria a classe de Mock
+que será testada.
 
 [https://github.com/Brightify/Cuckoo](https://github.com/Brightify/Cuckoo)
 
@@ -194,7 +201,9 @@ let avaliadorFalso = Avaliador()
 
 ## Ensinando o Mock a responder conforme o esperado
 
-Quando o método .encerrados() for chamado, o mock irá retornar imadiatamente o valor dentro de .thenReturn(...)
+Quando o método .encerrados() for chamado, o mock irá retornar imadiatamente o
+valor dentro de .thenReturn(...)
+
 Exemplo:
 
 ```swift
